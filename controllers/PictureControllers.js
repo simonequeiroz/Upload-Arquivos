@@ -7,7 +7,6 @@ const fs = require("fs");
 // Função responsável por criar e salvar uma nova imagem
 exports.create = async (req, res) => {
   // Enviando uma resposta simples dizendo "Ok!" no início (pode ser útil para verificar a requisição)
-  res.json("Ok!");
 
   try {
     // Extraindo o nome da imagem a partir do corpo da requisição (o cliente deve enviar o nome da imagem)
@@ -27,7 +26,7 @@ exports.create = async (req, res) => {
 
     // Enviando uma resposta JSON com o objeto "picture" e uma mensagem de sucesso
     res.json({ picture, msg: "Imagem salva com sucesso!" });
-  } catch (error) {
+  } catch (err) {
     // Se ocorrer algum erro durante o processo, envia uma resposta com status 500 (erro no servidor)
     // E uma mensagem informando que houve um erro ao salvar a imagem
     res.status(500).json({ message: "Erro ao salvar!" });
@@ -45,6 +44,6 @@ exports.findAll = async (req, res) => {
   } catch (error) {
     // Caso ocorra algum erro, envia uma resposta com status 500 (erro no servidor)
     // E uma mensagem informando que houve um erro ao buscar as imagens
-    res.status(500).json({ message: "Erro ao buscar!" });
+    res.status(500).json({ message: "Erro ao buscar as imagens!" });
   }
 };

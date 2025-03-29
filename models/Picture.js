@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 // Definindo o esquema para o modelo "Picture" (Imagem) no MongoDB
 const PictureSchema = new Schema({
   // A propriedade "name" irá armazenar o nome da imagem, e é do tipo String. "required: true" significa que este campo é obrigatório.
-  name: { type: String, require: true },
+  name: { type: String, required: true },
   
   // A propriedade "src" irá armazenar o caminho ou URL da imagem. Também é do tipo String e é um campo obrigatório.
   src: { type: String, required: true },
