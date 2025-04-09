@@ -14,10 +14,10 @@ exports.create = async (req, res) => {
 
     // Extraindo o arquivo enviado na requisição (o arquivo foi manipulado pelo multer)
     const file = req.file;
-    
+
     // Criando um novo documento "Picture" com os dados recebidos: nome e caminho do arquivo
     const picture = new Picture({
-      name,          // O nome da imagem, que vem do corpo da requisição
+      name, // O nome da imagem, que vem do corpo da requisição
       src: file.path, // O caminho do arquivo, que foi gerado automaticamente pelo multer (onde o arquivo foi salvo)
     });
 
@@ -45,5 +45,19 @@ exports.findAll = async (req, res) => {
     // Caso ocorra algum erro, envia uma resposta com status 500 (erro no servidor)
     // E uma mensagem informando que houve um erro ao buscar as imagens
     res.status(500).json({ message: "Erro ao buscar as imagens!" });
+  }
+};
+
+// Função para obter uma imagem especifica
+exports.getImage = async (req, res) => {
+  try {
+    const picture = await Picture.findById(req.params.id)
+    if (!picture) {
+      return res.status(404).json({ message: "Imagem não encontrada!" });
+    }
+    res.set("Content-Type", picture.contentType);
+    res.send(picture.image);
+  } catch (error) {
+    res.status(500).jason({ message: "Erro ao buscar Imagem!" });
   }
 };

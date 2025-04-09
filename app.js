@@ -11,17 +11,28 @@ require("dotenv").config();
 require("./db");
 
 // Define a porta do servidor (.Env ou 3000)
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
 
-// Importar o roteador de img. para  utilizar as rotas 
+// Importar o roteador de img. para  utilizar as rotas
 const pictureRouter = require("./routes/picture");
+
+//Configurnado o CORS
+app.use((req, res, next) => {
+  //Permite que qualquer origem, faça requisições para o servidor
+  res.header("Access-Control-Allow-Origin", "*");
+  //Permite os métodos GET, POST, DELETE 
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  // Chama a próxima rota ou middlewares
+  next();
+});
 
 // Dfine que todas rotas começam com pictures
 // Será tratada os envios (GET, POST E ETC), pelo pictureRouter
 // http://localhost:4000/pictures
 app.use("/pictures", pictureRouter);
 
-// Inicia o servidor 
+// Inicia o servidor
 app.listen(port, () => {
   console.log(`O Servidor executa na porta ${port}`);
 });

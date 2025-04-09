@@ -10,13 +10,16 @@ const upload = require("../config/multer");
 // Importando o controlador de imagens, onde a lógica de criação de imagens é definida (GET, POST e etc...)
 const PictureController = require("../controllers/PictureControllers");
 
-// Definindo a rota POST para a criação de uma imagem. 
-// A rota receberá um arquivo e o processará usando o middleware "multer", 
+// Definindo a rota POST para a criação de uma imagem.
+// A rota receberá um arquivo e o processará usando o middleware "multer",
 // e, em seguida, passará o controle para o método "create" do PictureController
 router.post("/", upload.single("file"), PictureController.create);
 
 // Definindo a rota GET (Trazer todas as imagens do MongoDB)
 router.get("/", PictureController.findAll);
+
+// Rota para obter uma imagem especifica
+router.get("/:id/imagem", PictureController.getImage);
 
 //Exportando para utilizar em outro arquivo
 module.exports = router;
