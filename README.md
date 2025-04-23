@@ -38,22 +38,15 @@ node app.js
 5. Acesse:  
 http://localhost:3000
 
-
-## 📦 Deploy
-
-Este projeto está hospedado no [Render/Vercel/Railway] *(iremos configurar agora!)*
-
 ---
 
-## ☕ Contato
-
 ## 📦 Deploy
 
-Este projeto está hospedado no [Render/Vercel/Railway] *(iremos configurar agora!)*
+Este projeto está hospedado no Render *(iremos configurar agora!)*
 
 ---
 
 ## ☕ Contato
 
 Desenvolvido por Simone Queiroz Batista  
-[LinkedIn (www.linkedin.com/in/simonequeirozbatista)]
+LinkedIn (www.linkedin.com/in/simonequeirozbatista)
